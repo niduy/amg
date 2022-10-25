@@ -1,8 +1,8 @@
-import init, { convert_img, convert_gif } from '../pkg/amg.js';
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import init, { convert_img, convert_gif } from './wasm/amg.js';
+import { sleep } from './utils.js';
 
 const printAsciiImage = async (ascii_image, abortSignal, asciiElement) => {
+	// Once `abortController.abort() is executed, `abortController.signal.aborted` becomes true
 	if (abortSignal.aborted) return;
 
 	// Setting such amount of text in an element takes up to a few milliseconds,

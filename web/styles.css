@@ -7,13 +7,14 @@
 }
 
 body {
+	margin: 0;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	overflow: hidden;
+	overflow: auto;
 }
 
 #ascii {
@@ -62,5 +63,4 @@ body {
 
 .image-container {
 	margin: 10px;
-	border: 1px solid #ccc;
 }

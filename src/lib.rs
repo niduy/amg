@@ -14,6 +14,8 @@ fn convert_image_to_ascii(img: &DynamicImage) -> String {
     let (width, height) = img.dimensions();
     let mut output = String::new();
 
+    // Display a symbol for every 24th symbol to make it look as close as possible to
+    // the original image dimention-wise
     for y in 0..height {
         if y % 8 != 0 {
             continue;
@@ -58,6 +60,8 @@ pub fn convert_img(image_buffer: Vec<u8>) -> String {
 
 #[wasm_bindgen]
 pub fn convert_gif(image_buffer: Vec<u8>) -> Result<JsValue, JsValue> {
+    // GifDecoder only accepts inputs with the train "Read",
+    // while vectors don't have it. To fix this, convert Vec<u8> to &[u8]
     let readable_image_buffer = &image_buffer[..];
     let decoder = GifDecoder::new(readable_image_buffer).unwrap();
 
@@ -73,5 +77,9 @@ pub fn convert_gif(image_buffer: Vec<u8>) -> Result<JsValue, JsValue> {
         .map(convert_frame_to_gif_ascii_frame)
         .collect();
 
+    // While sending serialized data to JavaScript is convenient,
+    // for performance-crusial applications it's best to opt-in to
+    // sending stuff that is part of IntoWasmAbi or modifying memory
+    // directly
     Ok(serde_wasm_bindgen::to_value(&gif_ascii_frames).unwrap())
 }
