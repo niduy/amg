@@ -4,6 +4,7 @@
 	background-color: #111;
 	color: #fff;
 	font-family: 'Comfortaa';
+	box-sizing: border-box;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
 	margin: 0;
 	white-space: pre-wrap;
 	font-family: monospace;
+	line-height: 8px;
 	font-size: 5px;
 }
 
@@ -40,7 +42,6 @@ body {
 
 #image-input-text {
 	margin-left: 10px;
-	font-family: sans-serif;
 	color: #aaa;
 }
 
@@ -57,7 +58,7 @@ body {
 	display: flex;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 	.content {
 		flex-direction: column;
 	}
