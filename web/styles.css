@@ -57,6 +57,12 @@ body {
 	display: flex;
 }
 
+@media screen and (max-width: 600px) {
+	.content {
+		flex-direction: column;
+	}
+}
+
 .image-input-container {
 	padding-bottom: 20px;
 }
