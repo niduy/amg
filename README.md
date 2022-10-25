@@ -1,6 +1,6 @@
 # amg
 
-Convert images to ASCII characters
+Convert images to ASCII art
 
 ## Development
 
