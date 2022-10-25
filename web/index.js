@@ -17,8 +17,10 @@ const printAsciiImage = async (ascii_image, abortSignal) => {
 };
 
 const printAsciiImages = async (ascii_images, abortSignal) => {
-	for (const ascii_image of ascii_images) {
-		await printAsciiImage(ascii_image, abortSignal);
+	while (!abortSignal.aborted) {
+		for (const ascii_image of ascii_images) {
+			await printAsciiImage(ascii_image, abortSignal);
+		}
 	}
 };
 
@@ -27,8 +29,6 @@ const handleImageInputChange = async (event) => {
 		abortController.abort();
 		abortController = null;
 	}
-
-	clearInterval(timer);
 
 	const file = event.target.files[0];
 	const isGif = file.type.split('/').pop() === 'gif';
@@ -40,15 +40,6 @@ const handleImageInputChange = async (event) => {
 	if (isGif) {
 		abortController = new AbortController();
 		const ascii_images = convert_gif(uint8Array);
-		const totalImageDelay = ascii_images.reduce(
-			(acc, img) => acc + img.delay,
-			0
-		);
-
-		timer = setInterval(
-			async () => printAsciiImages(ascii_images, abortController.signal),
-			totalImageDelay
-		);
 
 		imageElement.src = imageUrl;
 		await printAsciiImages(ascii_images, abortController.signal);
@@ -66,7 +57,6 @@ const imageInputElement = document.getElementById('image-input');
 const imageElement = document.getElementById('img');
 const asciiElement = document.getElementById('ascii');
 
-let timer = null;
 let abortController = null;
 
 imageInputElement.addEventListener('change', handleImageInputChange);
