@@ -1,0 +1,12 @@
+{
+  "name": "amg",
+  "version": "0.1.0",
+  "files": [
+    "amg_bg.wasm",
+    "amg.js",
+    "amg.d.ts"
+  ],
+  "module": "amg.js",
+  "types": "amg.d.ts",
+  "sideEffects": false
+}
