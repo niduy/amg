@@ -10,7 +10,7 @@ To build WASM, install `wasm-pack` and run
 wasm-pack build --target web --out-dir web/wasm
 ```
 
-To start the project, start any http server. e.g.
+To start the project, use any http server. e.g.
 
 ```sh
 cd web
