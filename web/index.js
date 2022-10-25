@@ -8,8 +8,10 @@ const handleImageInputChange = async (event, asciiElement, imageElement) => {
 		abortController = null;
 	}
 
-	const file = event.target.files[0];
+	const file = event.detail ?? event.target.files[0];
 	const isGif = file.type.split('/').pop() === 'gif';
+
+	console.log(event);
 
 	imageInputTextElement.innerHTML = file.name;
 
@@ -42,7 +44,7 @@ const imageElement = document.getElementById('img');
 const asciiElement = document.getElementById('ascii');
 const imageContainers = document.querySelectorAll('.image-container');
 
-// When updating an image, it is important to cancel the generation of the previous one.
+// When updating an image, it is important to cancel the printing of the previous one.
 // In JavaScript, synchronous operations are added to the stack and executed on the
 // first-in-last-out bases, which makes it practically impossible to cancel a loop from the outside
 // Lucklly, JavaScript has AbortController that allows us to cancel asynchronous operations. It
@@ -59,17 +61,17 @@ imageInputButtonElement.addEventListener('click', () =>
 );
 
 // Initialize image input with a gif
-const gifBlob = await fetch('./assets/triangle.gif');
+const response = await fetch('./assets/triangle.gif');
+const gifBlob = await response.blob();
 const gif = new File([gifBlob], 'triangle.gif', {
 	type: 'image/gif',
 });
-const changeEvent = new Event('change', {
-	target: {
-		files: [gif],
-	},
+
+const fileChangeEvent = new CustomEvent('change', {
+	detail: gif,
 });
 
-imageInputElement.dispatchEvent(changeEvent);
+imageInputElement.dispatchEvent(fileChangeEvent);
 
 // Sorry. I'm lazy too lazy to add dynamically appearing borders to the containers
 await sleep(300);
