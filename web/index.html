@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>amg</title>
+	</head>
+	<style>
+		* {
+			background-color: #111;
+			color: #fff;
+		}
+
+		.content {
+			display: flex;
+		}
+
+		#ascii {
+			padding: 0;
+			margin: 0;
+			white-space: pre-wrap;
+			font-family: monospace;
+			font-size: 5px;
+		}
+	</style>
+
+	<body>
+		<h1>amg</h1>
+		<p>Image to ASCII converter</p>
+		<input id="image-input" type="file" accept="image/*" aria-label="yeah" />
+		<div class="content">
+			<img id="img" alt="" />
+			<p id="ascii" />
+		</div>
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
