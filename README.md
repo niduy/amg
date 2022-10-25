@@ -2,6 +2,8 @@
 
 Convert images to ASCII art
 
+![Preview](assets/preview.gif)
+
 ## Development
 
 To build WASM, install `wasm-pack` and run
