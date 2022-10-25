@@ -4,37 +4,36 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128247;</text></svg>"
+		/>
+		<link rel="stylesheet" href="styles.css" type="text/css" />
 		<title>amg</title>
 	</head>
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
-
-		* {
-			background-color: #111;
-			color: #fff;
-			font-family: 'Comfortaa';
-		}
-
-		.content {
-			display: flex;
-		}
-
-		#ascii {
-			padding: 0;
-			margin: 0;
-			white-space: pre-wrap;
-			font-family: monospace;
-			font-size: 5px;
-		}
-	</style>
+	<style></style>
 
 	<body>
-		<h1>amg</h1>
-		<p>Image to ASCII converter</p>
-		<input id="image-input" type="file" accept="image/*" aria-label="yeah" />
+		<h1 class="header">amg</h1>
+		<p class="subheader">Image to ASCII converter</p>
+		<div class="image-input-container">
+			<input
+				id="image-input"
+				type="file"
+				accept="image/*"
+				aria-label="image input"
+				hidden
+			/>
+			<button type="button" id="image-input-button">Select a file</button>
+			<span id="image-input-text">No file selected</span>
+		</div>
 		<div class="content">
-			<img id="img" alt="" />
-			<p id="ascii" />
+			<div class="image-container">
+				<img id="img" alt="" />
+			</div>
+			<div class="image-container">
+				<p id="ascii" />
+			</div>
 		</div>
 		<script type="module" src="index.js"></script>
 	</body>
