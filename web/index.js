@@ -73,7 +73,9 @@ imageInputElement.addEventListener('change', async (event) => {
 	resizeAscii(asciiElement, imageElement, imageElementInitialDimentions);
 });
 
-imageInputButtonElement.addEventListener('click', imageInputElement.click);
+imageInputButtonElement.addEventListener('click', () =>
+	imageInputElement.click()
+);
 
 window.addEventListener('resize', () =>
 	resizeAscii(asciiElement, imageElement, imageElementInitialDimentions)
