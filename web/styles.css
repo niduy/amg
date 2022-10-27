@@ -11,11 +11,6 @@ body {
 	margin: 0;
 	width: 100vw;
 	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	overflow: auto;
 }
 
 #ascii {
@@ -23,8 +18,6 @@ body {
 	margin: 0;
 	white-space: pre-wrap;
 	font-family: monospace;
-	line-height: 8px;
-	font-size: 5px;
 }
 
 #image-input-button {
@@ -55,13 +48,19 @@ body {
 }
 
 .content {
+	width: 100%;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
-@media screen and (max-width: 768px) {
-	.content {
-		flex-direction: column;
-	}
+.top {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 .image-input-container {
@@ -69,5 +68,5 @@ body {
 }
 
 .image-container {
-	margin: 10px;
+	margin: 5px 10px;
 }
