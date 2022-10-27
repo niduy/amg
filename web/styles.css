@@ -19,6 +19,7 @@ body {
 	white-space: pre-wrap;
 	font-family: monospace;
 	letter-spacing: 0px;
+	text-size-adjust: none;
 }
 
 #image-input-button {
