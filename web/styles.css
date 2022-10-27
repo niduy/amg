@@ -1,4 +1,5 @@
 @import './normalize.css';
+@import './loader.css';
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 * {

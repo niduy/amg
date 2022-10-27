@@ -19,8 +19,10 @@ const imageInputButtonElement = document.getElementById('image-input-button');
 const imageInputTextElement = document.getElementById('image-input-text');
 const imageElement = document.getElementById('img');
 const asciiElement = document.getElementById('ascii');
+const loaderElement = document.getElementById('loader');
 
 const handleImageInputChange = async (event, asciiElement, imageElement) => {
+	loaderElement.style.opacity = 0.3;
 	// When a new image is provided, send a signal to abort the async operation
 	if (abortController) {
 		abortController.abort();
@@ -52,6 +54,8 @@ const handleImageInputChange = async (event, asciiElement, imageElement) => {
 			width: imageElement.naturalWidth,
 			height: imageElement.naturalHeight,
 		};
+
+		loaderElement.style.opacity = 0;
 		printAsciiImages(ascii_images, abortController.signal, asciiElement);
 		return;
 	}
@@ -65,6 +69,8 @@ const handleImageInputChange = async (event, asciiElement, imageElement) => {
 		width: imageElement.naturalWidth,
 		height: imageElement.naturalHeight,
 	};
+
+	loaderElement.style.opacity = 0;
 	asciiElement.textContent = ascii_image;
 };
 
