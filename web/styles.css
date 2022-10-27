@@ -18,6 +18,7 @@ body {
 	margin: 0;
 	white-space: pre-wrap;
 	font-family: monospace;
+	letter-spacing: 0px;
 }
 
 #image-input-button {

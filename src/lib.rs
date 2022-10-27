@@ -14,8 +14,8 @@ fn convert_image_to_ascii(img: &DynamicImage) -> String {
     let (width, height) = img.dimensions();
     let mut output = String::new();
 
-    // Display a symbol for every 24th symbol to make it look as close as possible to
-    // the original image dimention-wise
+    // Display a symbol for every 24th pixel to make it look as close as possible to
+    // the original image, dimention-wise
     for y in 0..height {
         if y % 8 != 0 {
             continue;
@@ -43,6 +43,7 @@ fn convert_image_to_ascii(img: &DynamicImage) -> String {
 
 fn convert_frame_to_gif_ascii_frame(frame: Frame) -> GifAsciiFrame {
     let ascii_string = convert_image_to_ascii(&DynamicImage::ImageRgba8(frame.buffer().clone()));
+    // `numer_demon_ms` returns a tuple with frame's duration and denom
     let (delay, ..) = frame.delay().numer_denom_ms();
 
     GifAsciiFrame {
@@ -78,8 +79,8 @@ pub fn convert_gif(image_buffer: Vec<u8>) -> Result<JsValue, JsValue> {
         .collect();
 
     // While sending serialized data to JavaScript is convenient,
-    // for performance-crusial applications it's best to opt-in to
-    // sending stuff that is part of IntoWasmAbi or modifying memory
+    // for performance-crucial applications, it's best to opt-in to
+    // sending data that is part of IntoWasmAbi or modifying memory
     // directly
     Ok(serde_wasm_bindgen::to_value(&gif_ascii_frames).unwrap())
 }
